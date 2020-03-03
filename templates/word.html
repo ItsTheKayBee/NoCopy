@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
+<title>Word</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/v4-shims.css">
 <style>
 .w3-sidebar a {font-family: "Roboto", sans-serif}
 body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
@@ -26,7 +29,6 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
         </a>
         <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
             <a href="/text" class="w3-bar-item w3-button">Text</a>
-            <a href="/pdf" class="w3-bar-item w3-button">PDF</a>
             <a href="word" class="w3-bar-item w3-button w3-white">Word Docs</a>
         </div>
     </div>
@@ -38,6 +40,26 @@ body,h1,h2,h3,h4,h5,h6,.w3-wide {font-family: "Montserrat", sans-serif;}
 </header>
 
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+<div class="w3-main" style="margin-left:250px">
+
+    <!-- Push down content on small screens -->
+    <div class="w3-hide-large" style="margin-top:83px"></div>
+
+    <div class="w3-container w3-text-grey" id="jeans">
+        <p>{{ data|length }} documents</p>
+    </div>
+
+    <div class="w3-row">
+        {% for path in data %}
+        <div class="w3-col l3 s6">
+            <div class="w3-container w3-center">
+                <p class="w3-center">{{path[0][7:27]}}{{ '...' if path[0]|length >34 }} </p>
+                <i class="fa fa-file-word" style="font-size:100px;color:#1976D2"></i>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 </body>
 <script>
 // Accordion

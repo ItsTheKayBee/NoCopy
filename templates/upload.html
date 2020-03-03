@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta charset="UTF-8">
+<title>Upload</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/v4-shims.css">
 <script
         src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -80,8 +83,7 @@ form button:active{
         </a>
         <div id="demoAcc" class="w3-bar-block w3-hide w3-padding-large w3-medium">
             <a href="/text" class="w3-bar-item w3-button">Text</a>
-            <a href="/pdf" class="w3-bar-item w3-button">PDF</a>
-            <a href="word" class="w3-bar-item w3-button">Word Docs</a>
+            <a href="/word" class="w3-bar-item w3-button">Word Docs</a>
         </div>
     </div>
 </nav>
@@ -92,14 +94,18 @@ form button:active{
 </header>
 
 <div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
-<form action="/success" method="POST" enctype="multipart/form-data">
-    <input type="file" id="uploaded-file" name="uploaded-file">
-    <p>Drag your files here or click in this area to upload.</p>
-    <button type="submit">Upload</button>
-</form>
+<div class="w3-main w3-center" style="margin-left:250px">
+    <div class="w3-hide-large" style="margin-top:83px"></div>
+    <form action="/success" method="POST" enctype="multipart/form-data">
+        <i class="fas fa-cloud-upload-alt" style="font-size:100px;margin:5px auto;color:rgba(41,128,185 ,0.9)"></i>
+        <input type="file" style="position:absolute;left:0" id="uploaded-file" name="uploaded-file">
+        <p style="position:absolute;top:20px" >Drag your files here or click in this area to upload.</p>
+        <button style="margin-top:20%" type="submit">UPLOAD</button>
+    </form>
+</div>
+
 </body>
 <script>
-// Accordion
 function myAccFunc() {
   var x = document.getElementById("demoAcc");
   if (x.className.indexOf("w3-show") == -1) {
@@ -109,11 +115,8 @@ function myAccFunc() {
   }
 }
 
-// Click on the "Jeans" link on page load to open the accordion for demo purposes
 document.getElementById("myBtn").click();
 
-
-// Open and close sidebar
 function w3_open() {
   document.getElementById("mySidebar").style.display = "block";
   document.getElementById("myOverlay").style.display = "block";
@@ -126,12 +129,11 @@ function w3_close() {
 </script>
 <script>
     $(document).ready(function(){
-  $('form input').change(function () {
-  var x = document.getElementById("uploaded-file").value;
-  var fileName = x.substring(x.lastIndexOf("\\")+1);
-    $('form p').text(fileName);
-  });
-});
+        $('form input').change(function () {
+        var x = document.getElementById("uploaded-file").value;
+        var fileName = x.substring(x.lastIndexOf("\\")+1);
+          $('form p').text(fileName);
+        });
+    });
 </script>
 </html>
-
